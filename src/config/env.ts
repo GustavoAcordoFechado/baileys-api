@@ -34,7 +34,7 @@ const envSchema = z
 		MAX_RECONNECT_RETRIES: z.number().default(5),
 		SSE_MAX_QR_GENERATION: z.number().default(5),
 		SESSION_CONFIG_ID: z.string().optional().default("session-config"),
-		API_KEY: z.string(),
+		API_KEY: z.string().optional(),
 	})
 	.superRefine((data, ctx) => {
 		if (data.ENABLE_WEBHOOK && !data.URL_WEBHOOK) {

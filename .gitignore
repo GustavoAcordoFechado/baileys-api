@@ -5,4 +5,5 @@ prisma/migrations/
 .env
 *.tgz
 *.log
+package-lock.json
 tsconfig.tsbuildinfo
