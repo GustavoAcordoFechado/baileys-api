@@ -1,17 +1,21 @@
-FROM node:20-alpine AS builder
+FROM node:20-alpine
 
 WORKDIR /app
 
 COPY package*.json .
 
-# Install git
-RUN apk add --no-cache git
+# Install required system dependencies for Prisma
+RUN apk add --no-cache \
+    openssl \
+    openssl-dev \
+    libc6-compat \
+    git
 
-RUN npm install --quiet
+COPY . .    
 
-RUN npx prisma migrate
+RUN npm install
 
-COPY . .
+RUN npm run build
 
 EXPOSE 3000
 
