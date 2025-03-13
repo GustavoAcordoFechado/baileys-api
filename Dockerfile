@@ -2,7 +2,7 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package*.json .
+COPY package.json .
 
 # Install required system dependencies for Prisma
 RUN apk add --no-cache \
